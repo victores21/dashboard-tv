@@ -59,12 +59,62 @@ const Dashboard = () => {
 
           <div className="movies-grid-small d-flex align-items-center flex-column p-0 m-0 flex-md-row ">
             <div className="card">
-              <div className="overview">Overview</div>
-              <div className="card-right">Card</div>
+              <div className="overview">
+                <img
+                  src="https://static.tvmaze.com/uploads/images/original_untouched/0/224.jpg"
+                  alt="movie poster"
+                />
+              </div>
+              <div className="card-right">
+                <div className="name">Constantine</div>
+                <div className="categories d-none d-lg-block">
+                  Horror · Thriller · Supernatural
+                </div>
+              </div>
             </div>
-            <div className="card">Card</div>
-            <div className="card">Card</div>
-            <div className="card">Card</div>
+            <div className="card">
+              <div className="overview">
+                <img
+                  src="https://static.tvmaze.com/uploads/images/medium_portrait/423/1058582.jpg"
+                  alt="movie poster"
+                />
+              </div>
+              <div className="card-right">
+                <div className="name">The Amazing Race</div>
+                <div className="categories d-none d-lg-block">
+                  Action · Adventure · Family
+                </div>
+              </div>
+            </div>
+            <div className="card">
+              <div className="overview">
+                <img
+                  src="https://static.tvmaze.com/uploads/images/medium_portrait/423/1058582.jpg"
+                  alt="movie poster"
+                />
+              </div>
+              <div className="card-right">
+                <div className="name">The Amazing Race</div>
+                <div className="categories d-none d-lg-block">
+                  Action · Adventure · Family
+                </div>
+              </div>
+            </div>
+
+            <div className="card">
+              <div className="overview">
+                <img
+                  src="https://static.tvmaze.com/uploads/images/medium_portrait/423/1058582.jpg"
+                  alt="movie poster"
+                />
+              </div>
+              <div className="card-right">
+                <div className="name">The Amazing Race</div>
+                <div className="categories d-none d-lg-block">
+                  Action · Adventure · Family
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="movies-grid-big d-flex align-items-center flex-column w-100 p-0 m-0 flex-md-row ">
