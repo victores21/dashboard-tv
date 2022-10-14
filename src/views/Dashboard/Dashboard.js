@@ -23,10 +23,10 @@ const Dashboard = () => {
         </div>
 
         {/* Content */}
-        <div className="content row">
+        <div className="content row px-3">
           <div className="slider">Slide 1</div>
 
-          <div className="movies-grid-small  ">
+          <div className="movies-grid-small d-flex align-items-center flex-column p-0 m-0 flex-md-row ">
             <div className="card">
               <div className="overview">Overview</div>
               <div className="card-right">Card</div>
@@ -36,19 +36,19 @@ const Dashboard = () => {
             <div className="card">Card</div>
           </div>
 
-          <div className="movies-grid-big">
-            <div className="big-movie-container">
+          <div className="movies-grid-big d-flex align-items-center flex-column w-100 p-0 m-0 flex-md-row ">
+            <div className="big-movie-container h-100 ">
               <div className="big-movie card card--big">big Movie</div>
             </div>
 
-            <div className="medium-movies-container">
+            <div className="medium-movies-container h-100 d-md-flex flex-md-column ">
               <div className="small-movie card card--medium">Movie</div>
               <div className="small-movie card card--medium">Movie</div>
             </div>
           </div>
         </div>
 
-        <footer>@2022 MTH made with love</footer>
+        <footer className="p-3 bg-danger mt-3">@2022 MTH made with love</footer>
       </div>
     </div>
   );
