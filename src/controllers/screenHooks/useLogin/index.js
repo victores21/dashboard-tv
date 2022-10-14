@@ -10,11 +10,15 @@ import { logIn } from "../../../features/user";
 import { useNavigate } from "react-router-dom";
 
 const useLogin = () => {
+  //Hooks
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  //States
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  //Functions
   const checkIfUserExist = () => {
     const users = usersData;
     const isUserInDB = users.users_registered.find(
