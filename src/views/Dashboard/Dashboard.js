@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import useComponents from "../../components";
 import useComponentHooks from "../../controllers/componentHooks";
+
+//Styles
 import "./dashboard.scss";
 
 //Images
@@ -9,7 +11,7 @@ import Avatar from "../../assets/images/avatar.png";
 import useControllers from "../../controllers";
 
 const Dashboard = () => {
-  const { Sidebar, MovieCard } = useComponents();
+  const { Sidebar, MovieCard, MoviePoster } = useComponents();
   const { useSidebar } = useComponentHooks();
   const { handleIsSidebarOpen, isOpen } = useSidebar();
   const { useScreenHooks } = useControllers();
@@ -61,10 +63,20 @@ const Dashboard = () => {
         {}
         {/* Content */}
         <div className="content row px-4">
-          <div className="slider">Slide 1</div>
+          <div className="slider pt-2 bg-success">
+            <p class="p-0 m-0 text-white">Hello User</p>
+
+            <div className="movies-posters d-flex flex-wrap justify-content-center align-items-center pb-2">
+              {shows.slice(0, 4).map((show) => (
+                <div key={show.id} className="mb-2 mr-2">
+                  <MoviePoster image={show.image.original} />
+                </div>
+              ))}
+            </div>
+          </div>
 
           <div className="movies-grid-small d-flex align-items-center flex-column p-0 m-0 flex-md-row ">
-            {shows.slice(0, 4).map((show) => (
+            {shows.slice(5, 9).map((show) => (
               <Fragment key={show.id}>
                 <MovieCard
                   name={show.name}
@@ -78,19 +90,19 @@ const Dashboard = () => {
           <div className="movies-grid-big  d-flex align-items-center flex-column w-100 p-0 m-0 flex-md-row ">
             <div className="big-movie-container mb-4 mb-md-0 h-100 ">
               <MovieCard
-                name={shows[5] && shows[5].name}
-                image={shows[5] && shows[5].image.original}
-                categories={shows[5] && shows[5].genres[0]}
+                name={shows[10] && shows[10].name}
+                image={shows[10] && shows[10].image.original}
+                categories={shows[10] && shows[10].genres[0]}
                 size="big"
                 description={
-                  shows[5] &&
-                  shows[5].summary.replace(/<[^>]+>/g, "").slice(0, 200)
+                  shows[10] &&
+                  shows[10].summary.replace(/<[^>]+>/g, "").slice(0, 200)
                 }
               />
             </div>
 
             <div className="medium-movies-container h-100 d-md-flex flex-md-column ">
-              {shows.slice(6, 8).map((show) => (
+              {shows.slice(11, 13).map((show) => (
                 <Fragment key={show.id} className="w-100 mb-2 ">
                   <MovieCard
                     name={show.name}

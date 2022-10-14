@@ -43,3 +43,19 @@
     transform: scale(1.02);
   }
 }
+
+.card--medium {
+  height: 100%;
+  max-height: 300px;
+  min-height: 200px;
+}
+
+.card--big {
+  height: 100% !important;
+  max-height: 400px;
+  min-height: 300px;
+
+  @media (min-width: 768px) {
+    max-height: 100%;
+  }
+}
