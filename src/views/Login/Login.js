@@ -1,5 +1,6 @@
 import React from "react";
 import "./login.css";
+import VozyLogo from "../../assets/images/vozy-logo.png";
 
 const Login = () => {
   return (
@@ -11,7 +12,9 @@ const Login = () => {
             <div class="col-lg-12 login-key">
               <i class="fa fa-key" aria-hidden="true"></i>
             </div>
-            <div class="col-lg-12 login-title">ADMIN PANEL</div>
+            <div class="col-lg-12 login-image w-100 d-flex justify-content-center">
+              <img src={VozyLogo} alt="" className="w-100 max-w-50" />
+            </div>
 
             <div class="col-lg-12 login-form">
               <div class="col-lg-12 login-form">

@@ -22,3 +22,14 @@ body {
     background: #edf2f7;
   }
 }
+
+.login .login-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.login .login-image img {
+  width: 100%;
+  max-width: 50%;
+}
