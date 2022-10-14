@@ -1,3 +1,10 @@
 {
-  "users_registered": [{ "id": 1, "name": "Victor Escalona" }]
+  "users_registered": [
+    {
+      "id": 1,
+      "name": "Victor Escalona",
+      "email": "victorescalonag@gmail.com",
+      "password": "12345"
+    }
+  ]
 }

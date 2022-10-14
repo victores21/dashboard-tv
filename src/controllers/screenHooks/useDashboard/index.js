@@ -12,4 +12,5 @@ const useDashboard = () => {
 
   return { showsStore };
 };
+
 export default useDashboard;

@@ -1,9 +1,10 @@
 import React from "react";
-
-import "./sidebar.scss";
 import PropTypes from "prop-types";
 
-const Sidebar = ({ isOpen, onClose }) => {
+//Styles
+import "./sidebar.scss";
+
+const Sidebar = ({ isOpen, onClose, onLogOut }) => {
   return (
     <div className={`sidebar ${isOpen && "sidebar--open"}`}>
       <div className="sidebar-close-button">
@@ -17,6 +18,8 @@ const Sidebar = ({ isOpen, onClose }) => {
         <li>Item Four</li>
         <li>Item Five</li>
       </ul>
+
+      <button onClick={onLogOut}>Log out</button>
     </div>
   );
 };
@@ -24,6 +27,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 Sidebar.propTypes = {
   isOpen: PropTypes.bool,
   onClose: PropTypes.func,
+  onLogOut: PropTypes.func,
 };
 
 export default Sidebar;

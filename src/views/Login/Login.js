@@ -1,8 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import "./login.css";
 import VozyLogo from "../../assets/images/vozy-logo.png";
+import { useNavigate } from "react-router-dom";
+import usersData from "../../fakeData/users.json";
+
+import { useDispatch } from "react-redux";
+import { logIn } from "../../features/user";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPasswrod] = useState("");
+
+  const checkIfUserExist = () => {
+    const users = usersData;
+    const isUserInDB = users.users_registered.find(
+      (user) => user.password === password
+    );
+
+    return isUserInDB ? true : false;
+  };
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const user = checkIfUserExist();
+
+    if (!user) return;
+
+    dispatch(logIn({ email }));
+    console.log("Si existe");
+    navigate("/dashboard");
+  };
+
+  console.log(usersData);
   return (
     <div className="login">
       <div class="container vh-100 d-flex justify-content-center align-items-center">
@@ -25,6 +55,10 @@ const Login = () => {
                       type="text"
                       class="form-control mt-2"
                       placeholder="Email"
+                      onChange={(event) => {
+                        setEmail(event.target.value);
+                      }}
+                      value={email}
                     />
                   </div>
                   <div class="form-group py-2">
@@ -33,11 +67,19 @@ const Login = () => {
                       type="password"
                       class="form-control mt-2"
                       placeholder="Password"
+                      onChange={(event) => {
+                        setPasswrod(event.target.value);
+                      }}
+                      value={password}
                     />
                   </div>
 
                   <div class="col-lg-12 pt-4 loginbttm">
-                    <button type="submit" class="btn btn-primary w-100 py-2">
+                    <button
+                      type="submit"
+                      class="btn btn-primary w-100 py-2"
+                      onClick={(event) => handleLogin(event)}
+                    >
                       LOGIN
                     </button>
                   </div>

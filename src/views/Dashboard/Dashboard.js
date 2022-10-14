@@ -10,18 +10,23 @@ import HamburguerMenu from "../../assets/images/icons/hamburger.png";
 import Avatar from "../../assets/images/avatar.png";
 import useControllers from "../../controllers";
 
+//Redux
+
 const Dashboard = () => {
   const { Sidebar, MovieCard, MoviePoster } = useComponents();
   const { useSidebar } = useComponentHooks();
-  const { handleIsSidebarOpen, isOpen } = useSidebar();
+  const { handleIsSidebarOpen, isOpen, handleLogOut } = useSidebar();
   const { useScreenHooks } = useControllers();
   const { useDashboard } = useScreenHooks();
   const { showsStore } = useDashboard();
 
   return (
     <div className="dashboard ">
-      {/* <div className="sidebar">Sidebar</div> */}
-      <Sidebar isOpen={isOpen} onClose={handleIsSidebarOpen} />
+      <Sidebar
+        isOpen={isOpen}
+        onClose={handleIsSidebarOpen}
+        onLogOut={handleLogOut}
+      />
       <div className="container-fluid ">
         {/* NAV */}
         <div className="nav row bg-danger p-3">
