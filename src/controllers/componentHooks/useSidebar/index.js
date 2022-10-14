@@ -13,6 +13,7 @@ const useSidebar = () => {
   };
 
   const handleLogOut = () => {
+    localStorage.setItem("user", "");
     dispatch(logOut());
   };
 

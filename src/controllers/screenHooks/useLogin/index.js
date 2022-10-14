@@ -41,7 +41,10 @@ const useLogin = () => {
     dispatch(logIn({ email }));
     const isLoginCorrect = verifyUser(user, password);
 
-    if (isLoginCorrect) navigate("/dashboard");
+    if (isLoginCorrect) {
+      localStorage.setItem("user", JSON.stringify({ email, isLoggedIn: true }));
+      navigate("/dashboard");
+    }
   };
 
   return { email, setEmail, password, setPassword, handleLogin };
