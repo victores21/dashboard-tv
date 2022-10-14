@@ -115,7 +115,7 @@ const Dashboard = () => {
 
             <div className="medium-movies-container h-100 d-md-flex flex-md-column ">
               {showsStore.shows.slice(11, 13).map((show) => (
-                <Fragment key={show.id} className="w-100 mb-2 ">
+                <Fragment key={show.id}>
                   <MovieCard
                     name={show.name}
                     image={show.image.original}
