@@ -1,5 +1,7 @@
+import useSidebar from "./useSidebar";
+
 const useComponentHooks = () => {
-  return {};
+  return { useSidebar };
 };
 
 export default useComponentHooks;

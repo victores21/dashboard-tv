@@ -1,5 +1,7 @@
+import Sidebar from "./Sidebar/Sidebar";
+
 const useComponents = () => {
-  return {};
+  return { Sidebar };
 };
 
 export default useComponents;

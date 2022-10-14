@@ -1,16 +1,26 @@
 import React from "react";
+import useComponents from "../../components";
+import useComponentHooks from "../../controllers/componentHooks";
 import "./dashboard.scss";
 
 const Dashboard = () => {
+  const { Sidebar } = useComponents();
+  const { useSidebar } = useComponentHooks();
+  const { handleIsSidebarOpen, isOpen } = useSidebar();
   return (
     <div className="dashboard ">
-      <div className="sidebar">Sidebar</div>
+      {/* <div className="sidebar">Sidebar</div> */}
+      <Sidebar isOpen={isOpen} onClose={handleIsSidebarOpen} />
       <div className="container">
         <div className="nav row bg-danger">
           <div className="col-12  d-flex align-items-center justify-content-between">
             <div className="left d-flex align-items-center">
               {/* Only in Mobile */}
-              <div className="burger-menu">Menu Burguer</div>
+              <div className="burger-menu" onClick={handleIsSidebarOpen}>
+                Menu Burguer
+              </div>
+
+              <button onClick={() => handleIsSidebarOpen()}>CLICK</button>
               {/* Ends Mobile */}
 
               <div className="search-input">

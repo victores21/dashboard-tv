@@ -1,0 +1,58 @@
+.sidebar {
+  width: 0;
+  transition: width 0.3s ease;
+  left: -500px;
+  background: #394263;
+  height: revert;
+  position: relative;
+  padding-left: 0.5rem;
+  padding-top: 5rem;
+
+  .sidebar-close-button {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+
+    button {
+      color: #fff;
+      background: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+
+  .sidebar-menu-items {
+    list-style: none;
+
+    li {
+      margin-bottom: 2rem;
+      color: #fff;
+    }
+  }
+
+  @media (min-width: 768px) {
+    width: 250px;
+    left: 0;
+
+    .sidebar-close-button {
+      display: none;
+    }
+  }
+}
+
+//Class to add when sidebar should open
+.sidebar--open {
+  width: 200px;
+  left: 0;
+  position: fixed;
+  height: 100%;
+  z-index: 10;
+
+  @media (min-width: 768px) {
+    width: 250px;
+    left: 0;
+    position: relative;
+    height: revert;
+  }
+}
