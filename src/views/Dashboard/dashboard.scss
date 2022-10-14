@@ -8,6 +8,40 @@
     height: 150px;
   }
 
+  .burguer-menu {
+    button {
+      outline: none;
+      border: none;
+      border-radius: 100%;
+      background: red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.6rem;
+
+      img {
+        width: 15px;
+      }
+    }
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .search-input {
+    input {
+      border: none;
+
+      &:hover {
+        border: none;
+      }
+    }
+  }
+
+  .user-image {
+    height: 35px;
+  }
+
   //   CARD
   .card {
     display: flex;

@@ -3,6 +3,10 @@ import useComponents from "../../components";
 import useComponentHooks from "../../controllers/componentHooks";
 import "./dashboard.scss";
 
+//Images
+import HamburguerMenu from "../../assets/images/icons/hamburger.png";
+import Avatar from "../../assets/images/avatar.png";
+
 const Dashboard = () => {
   const { Sidebar } = useComponents();
   const { useSidebar } = useComponentHooks();
@@ -11,29 +15,46 @@ const Dashboard = () => {
     <div className="dashboard ">
       {/* <div className="sidebar">Sidebar</div> */}
       <Sidebar isOpen={isOpen} onClose={handleIsSidebarOpen} />
-      <div className="container">
-        <div className="nav row bg-danger">
+      <div className="container-fluid ">
+        <div className="nav row bg-danger p-3">
           <div className="col-12  d-flex align-items-center justify-content-between">
             <div className="left d-flex align-items-center">
               {/* Only in Mobile */}
-              <div className="burger-menu" onClick={handleIsSidebarOpen}>
-                Menu Burguer
+              <div className="burguer-menu">
+                <button onClick={handleIsSidebarOpen}>
+                  <img
+                    src={HamburguerMenu}
+                    alt="Hamburguer Icon"
+                    title="Opens sidebar"
+                  />
+                </button>
               </div>
-
-              <button onClick={() => handleIsSidebarOpen()}>CLICK</button>
-              {/* Ends Mobile */}
+              {/* End mobile */}
 
               <div className="search-input">
-                <input type="text" placeholder="Search..." />
+                <div class="input-group">
+                  <input
+                    type="text"
+                    className="form-control bg-white no-border"
+                    placeholder="Search..."
+                  />
+                </div>
               </div>
             </div>
 
-            <div className="user-image">Your face</div>
+            <div className="user-image">
+              <img
+                src={Avatar}
+                alt="user avatar"
+                title="user avatar"
+                className="w-100 h-100"
+              />
+            </div>
           </div>
         </div>
 
         {/* Content */}
-        <div className="content row px-3">
+        <div className="content row px-4">
           <div className="slider">Slide 1</div>
 
           <div className="movies-grid-small d-flex align-items-center flex-column p-0 m-0 flex-md-row ">
