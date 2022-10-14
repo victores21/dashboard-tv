@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import useComponents from "../../components";
 import useComponentHooks from "../../controllers/componentHooks";
 import "./dashboard.scss";
@@ -8,14 +8,28 @@ import HamburguerMenu from "../../assets/images/icons/hamburger.png";
 import Avatar from "../../assets/images/avatar.png";
 
 const Dashboard = () => {
-  const { Sidebar } = useComponents();
+  const { Sidebar, MovieCard } = useComponents();
   const { useSidebar } = useComponentHooks();
   const { handleIsSidebarOpen, isOpen } = useSidebar();
+
+  //State
+  const [shows, setShows] = useState([]);
+  const getShows = async () => {
+    const req = await fetch("https://api.tvmaze.com/shows?page=0");
+    const res = req.json();
+    return res;
+  };
+
+  useEffect(() => {
+    getShows().then((res) => setShows(res));
+  }, []);
+
   return (
     <div className="dashboard ">
       {/* <div className="sidebar">Sidebar</div> */}
       <Sidebar isOpen={isOpen} onClose={handleIsSidebarOpen} />
       <div className="container-fluid ">
+        {/* NAV */}
         <div className="nav row bg-danger p-3">
           <div className="col-12  d-flex align-items-center justify-content-between">
             <div className="left d-flex align-items-center">
@@ -52,79 +66,48 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-
+        {}
         {/* Content */}
         <div className="content row px-4">
           <div className="slider">Slide 1</div>
 
           <div className="movies-grid-small d-flex align-items-center flex-column p-0 m-0 flex-md-row ">
-            <div className="card">
-              <div className="overview">
-                <img
-                  src="https://static.tvmaze.com/uploads/images/original_untouched/0/224.jpg"
-                  alt="movie poster"
+            {shows.slice(0, 4).map((show) => (
+              <Fragment key={show.id}>
+                <MovieCard
+                  name={show.name}
+                  image={show.image.original}
+                  categories={show.genres[0]}
                 />
-              </div>
-              <div className="card-right">
-                <div className="name">Constantine</div>
-                <div className="categories d-none d-lg-block">
-                  Horror · Thriller · Supernatural
-                </div>
-              </div>
-            </div>
-            <div className="card">
-              <div className="overview">
-                <img
-                  src="https://static.tvmaze.com/uploads/images/medium_portrait/423/1058582.jpg"
-                  alt="movie poster"
-                />
-              </div>
-              <div className="card-right">
-                <div className="name">The Amazing Race</div>
-                <div className="categories d-none d-lg-block">
-                  Action · Adventure · Family
-                </div>
-              </div>
-            </div>
-            <div className="card">
-              <div className="overview">
-                <img
-                  src="https://static.tvmaze.com/uploads/images/medium_portrait/423/1058582.jpg"
-                  alt="movie poster"
-                />
-              </div>
-              <div className="card-right">
-                <div className="name">The Amazing Race</div>
-                <div className="categories d-none d-lg-block">
-                  Action · Adventure · Family
-                </div>
-              </div>
-            </div>
-
-            <div className="card">
-              <div className="overview">
-                <img
-                  src="https://static.tvmaze.com/uploads/images/medium_portrait/423/1058582.jpg"
-                  alt="movie poster"
-                />
-              </div>
-              <div className="card-right">
-                <div className="name">The Amazing Race</div>
-                <div className="categories d-none d-lg-block">
-                  Action · Adventure · Family
-                </div>
-              </div>
-            </div>
+              </Fragment>
+            ))}
           </div>
 
-          <div className="movies-grid-big d-flex align-items-center flex-column w-100 p-0 m-0 flex-md-row ">
-            <div className="big-movie-container h-100 ">
-              <div className="big-movie card card--big">big Movie</div>
+          <div className="movies-grid-big  d-flex align-items-center flex-column w-100 p-0 m-0 flex-md-row ">
+            <div className="big-movie-container mb-4 mb-md-0 h-100 ">
+              <MovieCard
+                name={shows[5] && shows[5].name}
+                image={shows[5] && shows[5].image.original}
+                categories={shows[5] && shows[5].genres[0]}
+                size="big"
+                description={
+                  shows[5] &&
+                  shows[5].summary.replace(/<[^>]+>/g, "").slice(0, 200)
+                }
+              />
             </div>
 
             <div className="medium-movies-container h-100 d-md-flex flex-md-column ">
-              <div className="small-movie card card--medium">Movie</div>
-              <div className="small-movie card card--medium">Movie</div>
+              {shows.slice(6, 8).map((show) => (
+                <Fragment key={show.id} className="w-100 mb-2 ">
+                  <MovieCard
+                    name={show.name}
+                    image={show.image.original}
+                    categories={show.genres[0]}
+                    size="medium"
+                  />
+                </Fragment>
+              ))}
             </div>
           </div>
         </div>

@@ -1,7 +1,8 @@
 import Sidebar from "./Sidebar/Sidebar";
+import MovieCard from "./MovieCard/MovieCard";
 
 const useComponents = () => {
-  return { Sidebar };
+  return { Sidebar, MovieCard };
 };
 
 export default useComponents;
