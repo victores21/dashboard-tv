@@ -1,5 +1,5 @@
 const useAuth = () => {
-  const user = { isLoggedIn: false };
+  const user = { isLoggedIn: true };
 
   return user && user.isLoggedIn;
 };

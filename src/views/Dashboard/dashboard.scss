@@ -1,0 +1,101 @@
+.dashboard {
+  display: flex;
+  flex-direction: row;
+
+  .sidebar {
+    width: 0;
+    @media (min-width: 768px) {
+      width: 200px;
+    }
+  }
+  .slider {
+    background: green;
+    margin: 1rem 0;
+    height: 150px;
+  }
+
+  //   .small-movies {
+  //     display: flex;
+  //     flex-direction: column;
+  //     width: 100%;
+  //   }
+
+  .card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .card--big {
+    height: 100%;
+    max-height: 400px;
+    min-height: 300px;
+
+    @media (min-width: 768px) {
+      max-height: 100%;
+    }
+  }
+
+  .card--medium {
+    height: 100%;
+    max-height: 300px;
+    min-height: 200px;
+  }
+
+  .movies-grid-small {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+
+      .card {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  .movies-grid-big {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    .big-movie-container {
+      width: 100%;
+    }
+
+    .medium-movies-container {
+      width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      width: 100%;
+      height: 416px;
+
+      .big-movie-container {
+        // width: 60%;
+        width: 49.9%;
+        height: 100%;
+        margin-right: 0.5rem;
+      }
+
+      .medium-movies-container {
+        // width: 40%;
+        width: calc(100% - 49.9%);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+    }
+  }
+}
