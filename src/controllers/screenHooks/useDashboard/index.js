@@ -1,18 +1,15 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getShows } from "../../../features/shows";
 
 const useDashboard = () => {
-  const [shows, setShows] = useState([]);
-
-  const getShows = async () => {
-    const req = await fetch("https://api.tvmaze.com/shows?page=0");
-    const res = req.json();
-    return res;
-  };
+  const dispatch = useDispatch();
+  const showsStore = useSelector((store) => store.shows);
 
   useEffect(() => {
-    getShows().then((res) => setShows(res));
-  }, []);
+    dispatch(getShows());
+  }, [dispatch]);
 
-  return { shows };
+  return { showsStore };
 };
 export default useDashboard;
