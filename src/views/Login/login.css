@@ -1,0 +1,24 @@
+body {
+  background: #edf5fd !important;
+}
+
+.login .login-box {
+  padding: 1rem;
+  border-radius: 1rem;
+}
+@media (min-width: 768px) {
+  .login .login-box {
+    padding: 6rem;
+  }
+}
+
+.login label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.login {
+  input {
+    background: #edf2f7;
+  }
+}
