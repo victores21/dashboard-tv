@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { Fragment } from "react";
 import useComponents from "../../components";
 import useComponentHooks from "../../controllers/componentHooks";
 import "./dashboard.scss";
@@ -6,23 +6,15 @@ import "./dashboard.scss";
 //Images
 import HamburguerMenu from "../../assets/images/icons/hamburger.png";
 import Avatar from "../../assets/images/avatar.png";
+import useControllers from "../../controllers";
 
 const Dashboard = () => {
   const { Sidebar, MovieCard } = useComponents();
   const { useSidebar } = useComponentHooks();
   const { handleIsSidebarOpen, isOpen } = useSidebar();
-
-  //State
-  const [shows, setShows] = useState([]);
-  const getShows = async () => {
-    const req = await fetch("https://api.tvmaze.com/shows?page=0");
-    const res = req.json();
-    return res;
-  };
-
-  useEffect(() => {
-    getShows().then((res) => setShows(res));
-  }, []);
+  const { useScreenHooks } = useControllers();
+  const { useDashboard } = useScreenHooks();
+  const { shows } = useDashboard();
 
   return (
     <div className="dashboard ">

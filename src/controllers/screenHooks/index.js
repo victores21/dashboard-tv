@@ -1,5 +1,7 @@
+import useDashboard from "./useDashboard";
+
 const useScreenHooks = () => {
-  return {};
+  return { useDashboard };
 };
 
 export default useScreenHooks;
