@@ -19,7 +19,11 @@ const Sidebar = ({ isOpen, onClose, onLogOut }) => {
         <li>Item Five</li>
       </ul>
 
-      <button onClick={onLogOut}>Log out</button>
+      <div className="p-4">
+        <button type="button" class="btn btn-light " onClick={onLogOut}>
+          Log Out
+        </button>
+      </div>
     </div>
   );
 };
