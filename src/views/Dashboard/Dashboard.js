@@ -6,28 +6,21 @@ import useComponentHooks from "../../controllers/componentHooks";
 import "./dashboard.scss";
 
 //Images
-import HamburguerMenu from "../../assets/images/icons/hamburger.png";
-import Avatar from "../../assets/images/avatar.png";
+// import HamburguerMenu from "../../assets/images/icons/hamburger.png";
+// import Avatar from "../../assets/images/avatar.png";
 import useControllers from "../../controllers";
 import NotFoundPoster from "../../assets/images/not-found-poster.jpg";
 
 const Dashboard = () => {
   // Hooks
-  const { Sidebar, MovieCard, MoviePoster, Loading } = useComponents();
+  const { Sidebar, MovieCard, MoviePoster, Loading, Navbar } = useComponents();
   const { useSidebar } = useComponentHooks();
   const { handleIsSidebarOpen, isOpen, handleLogOut } = useSidebar();
   const { useScreenHooks } = useControllers();
   const { useDashboard } = useScreenHooks();
 
   //Page Hook
-  const {
-    showsStore,
-    setSearch,
-    search,
-    handleSearch,
-    pagination,
-    setPagination,
-  } = useDashboard();
+  const { showsStore, pagination, setPagination } = useDashboard();
 
   return (
     <div className="dashboard min-vh-100">
@@ -37,46 +30,7 @@ const Dashboard = () => {
         onLogOut={handleLogOut}
       />
       <div className="container-fluid ">
-        {/* NAV */}
-        <div className="nav row  p-3">
-          <div className="col-12  d-flex align-items-center justify-content-between">
-            <div className="left d-flex align-items-center">
-              {/* Only in Mobile */}
-              <div className="burguer-menu">
-                <button onClick={handleIsSidebarOpen}>
-                  <img
-                    src={HamburguerMenu}
-                    alt="Hamburguer Icon"
-                    title="Opens sidebar"
-                  />
-                </button>
-              </div>
-              {/* End mobile */}
-
-              <div className="search-input">
-                <div className="input-group">
-                  <input
-                    type="text"
-                    className="form-control bg-white no-border"
-                    placeholder="Search..."
-                    onChange={(e) => setSearch(e.target.value)}
-                    onKeyDown={(event) => handleSearch(event)}
-                    value={search}
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="user-image">
-              <img
-                src={Avatar}
-                alt="user avatar"
-                title="user avatar"
-                className="w-100 h-100"
-              />
-            </div>
-          </div>
-        </div>
+        <Navbar onSidebarOpen={handleIsSidebarOpen} />
 
         {!showsStore.loading && showsStore.type === "initial" && (
           <div className="row px-4">
@@ -203,9 +157,7 @@ const Dashboard = () => {
             </div>
           </div>
         )}
-        <footer className="p-3 mt-3 text-white">
-          @2022 MTH made with love
-        </footer>
+        <footer className="p-3 mt-3 text-white">@2022 Víctor Escalona</footer>
       </div>
       {showsStore.loading && <Loading />}
     </div>

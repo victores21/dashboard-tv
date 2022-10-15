@@ -6,8 +6,8 @@ import "./movie_poster.scss";
 
 const MoviePoster = ({ image }) => {
   return (
-    <div className="movie-poster">
-      <img src={image} alt="movie poster" />
+    <div className="movie-poster m-2">
+      <img src={image} alt="movie poster " className="w-100" />
     </div>
   );
 };

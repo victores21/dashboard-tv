@@ -6,17 +6,15 @@ import "./sidebar.scss";
 
 const Sidebar = ({ isOpen, onClose, onLogOut }) => {
   return (
-    <div className={`sidebar ${isOpen && "sidebar--open"}`}>
-      <div className="sidebar-close-button">
-        <button onClick={onClose}>X</button>
+    <div className={`sidebar  ${isOpen && "sidebar--open"}`}>
+      <div className="sidebar-close-button ">
+        <button className="" onClick={onClose}>
+          X
+        </button>
       </div>
 
       <ul className="sidebar-menu-items">
-        <li>Item One</li>
-        <li>Item Two</li>
-        <li>Item Three</li>
-        <li>Item Four</li>
-        <li>Item Five</li>
+        <li>Menu Item</li>
       </ul>
 
       <div className="p-4">
