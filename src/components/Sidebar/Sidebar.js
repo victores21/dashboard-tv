@@ -20,7 +20,7 @@ const Sidebar = ({ isOpen, onClose, onLogOut }) => {
       </ul>
 
       <div className="p-4">
-        <button type="button" class="btn btn-light " onClick={onLogOut}>
+        <button type="button" className="btn btn-light " onClick={onLogOut}>
           Log Out
         </button>
       </div>

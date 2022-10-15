@@ -23,7 +23,7 @@ const Dashboard = () => {
   const { showsStore, setSearch, search, handleSearch } = useDashboard();
 
   return (
-    <div className="dashboard">
+    <div className="dashboard min-vh-100">
       <Sidebar
         isOpen={isOpen}
         onClose={handleIsSidebarOpen}
@@ -155,7 +155,9 @@ const Dashboard = () => {
           </div>
         )}
 
-        <footer className="p-3 mt-3">@2022 MTH made with love</footer>
+        <footer className="p-3 mt-3 text-white">
+          @2022 MTH made with love
+        </footer>
       </div>
     </div>
   );
