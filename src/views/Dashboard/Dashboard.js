@@ -31,7 +31,7 @@ const Dashboard = () => {
       />
       <div className="container-fluid ">
         {/* NAV */}
-        <div className="nav row bg-danger p-3">
+        <div className="nav row  p-3">
           <div className="col-12  d-flex align-items-center justify-content-between">
             <div className="left d-flex align-items-center">
               {/* Only in Mobile */}
@@ -73,7 +73,7 @@ const Dashboard = () => {
 
         {!showsStore.loading && showsStore.type === "initial" && (
           <div className="content row px-4">
-            <div className="slider pt-2 bg-success">
+            <div className="slider pt-2 ">
               <p className="p-0 m-0 text-white">Hello User</p>
 
               <div className="movies-posters d-flex flex-wrap justify-content-center align-items-center pb-2">
@@ -155,7 +155,7 @@ const Dashboard = () => {
           </div>
         )}
 
-        <footer className="p-3 bg-danger mt-3">@2022 MTH made with love</footer>
+        <footer className="p-3 mt-3">@2022 MTH made with love</footer>
       </div>
     </div>
   );
