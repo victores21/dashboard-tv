@@ -32,6 +32,7 @@ const Dashboard = () => {
       <div className="container-fluid ">
         <Navbar onSidebarOpen={handleIsSidebarOpen} />
 
+        {/* This is what's gonna be shown when page first loads */}
         {!showsStore.loading && showsStore.type === "initial" && (
           <div className="row px-4">
             <div className="slider pt-2 ">
@@ -50,6 +51,8 @@ const Dashboard = () => {
                   ))}
               </div>
             </div>
+
+            {/* Small Movie cards */}
             <div className="movies-grid-small d-flex align-items-center flex-column p-0 m-0 flex-md-row ">
               {showsStore.shows.slice(5, 9).map((show) => (
                 <Fragment key={show.id}>
@@ -61,7 +64,10 @@ const Dashboard = () => {
                 </Fragment>
               ))}
             </div>
-            <div className="movies-grid-big  d-flex align-items-center flex-column w-100 p-0 m-0 flex-md-row ">
+
+            {/* Grid With Big & Medium cards */}
+            <div className="movies-grid-big  d-flex align-items-center flex-column w-100 p-0 m-0 flex-md-row mt-2 ">
+              {/* BIG CARD */}
               <div className="big-movie-container mb-4 mb-md-0 h-100 ">
                 <MovieCard
                   name={showsStore.shows[10] && showsStore.shows[10].name}
@@ -81,6 +87,7 @@ const Dashboard = () => {
                 />
               </div>
 
+              {/* MEDIUM CARDS */}
               <div className="medium-movies-container h-100 d-md-flex flex-md-column ">
                 {showsStore.shows.slice(11, 13).map((show) => (
                   <Fragment key={show.id}>
@@ -95,6 +102,7 @@ const Dashboard = () => {
               </div>
             </div>
 
+            {/* Medium Cards */}
             <div className="container-fluid mt-3">
               <div className="row">
                 {showsStore.shows
@@ -117,6 +125,7 @@ const Dashboard = () => {
               </div>
             </div>
 
+            {/* Pagination */}
             <div className="container">
               <div className="row">
                 <div className="col-12 d-flex justify-content-center align-items-center">
@@ -139,7 +148,7 @@ const Dashboard = () => {
             </div>
           </div>
         )}
-        {/* Content */}
+        {/* This is what is shown when users search by query */}
         {!showsStore.loading && showsStore.type === "search" && (
           // Only Appears when is search
           <div className="container-fluid mt-3">
@@ -159,6 +168,7 @@ const Dashboard = () => {
         )}
         <footer className="p-3 mt-3 text-white">@2022 Víctor Escalona</footer>
       </div>
+      {/* Loading  */}
       {showsStore.loading && <Loading />}
     </div>
   );
