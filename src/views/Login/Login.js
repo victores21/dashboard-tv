@@ -1,5 +1,5 @@
 import React from "react";
-import "./login.css";
+import "./login.scss";
 import VozyLogo from "../../assets/images/vozy-logo.png";
 
 import useControllers from "../../controllers";

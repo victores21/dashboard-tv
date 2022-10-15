@@ -10,9 +10,9 @@ import HamburguerMenu from "../../assets/images/icons/hamburger.png";
 import Avatar from "../../assets/images/avatar.png";
 import useControllers from "../../controllers";
 import NotFoundPoster from "../../assets/images/not-found-poster.jpg";
-//Redux
 
 const Dashboard = () => {
+  // Hooks
   const { Sidebar, MovieCard, MoviePoster, Loading } = useComponents();
   const { useSidebar } = useComponentHooks();
   const { handleIsSidebarOpen, isOpen, handleLogOut } = useSidebar();

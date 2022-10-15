@@ -1,4 +1,5 @@
 import React from "react";
+//Styles
 import "./loading.scss";
 
 const Loading = () => {
