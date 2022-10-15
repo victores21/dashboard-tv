@@ -140,9 +140,9 @@ const Dashboard = () => {
         {!showsStore.loading && showsStore.type === "search" && (
           // Only Appears when is search
           <div className="container-fluid mt-3">
-            <div class="row">
+            <div className="row">
               {showsStore.shows.slice(0, 10).map((show) => (
-                <div class="col-lg-6 col-md-12" key={("search-", show.id)}>
+                <div className="col-lg-6 col-md-12" key={("search-", show.id)}>
                   <MovieCard
                     name={show.name}
                     image={show.image ? show.image.original : NotFoundPoster}
