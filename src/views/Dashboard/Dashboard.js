@@ -152,7 +152,8 @@ const Dashboard = () => {
         {!showsStore.loading && showsStore.type === "search" && (
           // Only Appears when is search
           <div className="container-fluid mt-3">
-            <div className="row">
+            <div className="row min-vh-100">
+              {showsStore.shows.length <= 0 && <p className="h1">Not Found</p>}
               {showsStore.shows.slice(0, 10).map((show) => (
                 <div className="col-lg-6 col-md-12" key={("search-", show.id)}>
                   <MovieCard
