@@ -10,8 +10,8 @@ const initialState = {
 };
 
 //Async Actions
-export const getShows = createAsyncThunk("shows/getShows", () => {
-  return fetch("https://api.tvmaze.com/shows?page=0")
+export const getShows = createAsyncThunk("shows/getShows", (page = 0) => {
+  return fetch(`https://api.tvmaze.com/shows?page=${page}`)
     .then((res) => res.json())
     .then((shows) => shows);
 });

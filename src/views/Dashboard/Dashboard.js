@@ -13,14 +13,21 @@ import NotFoundPoster from "../../assets/images/not-found-poster.jpg";
 //Redux
 
 const Dashboard = () => {
-  const { Sidebar, MovieCard, MoviePoster } = useComponents();
+  const { Sidebar, MovieCard, MoviePoster, Loading } = useComponents();
   const { useSidebar } = useComponentHooks();
   const { handleIsSidebarOpen, isOpen, handleLogOut } = useSidebar();
   const { useScreenHooks } = useControllers();
   const { useDashboard } = useScreenHooks();
 
   //Page Hook
-  const { showsStore, setSearch, search, handleSearch } = useDashboard();
+  const {
+    showsStore,
+    setSearch,
+    search,
+    handleSearch,
+    pagination,
+    setPagination,
+  } = useDashboard();
 
   return (
     <div className="dashboard min-vh-100">
@@ -72,7 +79,7 @@ const Dashboard = () => {
         </div>
 
         {!showsStore.loading && showsStore.type === "initial" && (
-          <div className="content row px-4">
+          <div className="row px-4">
             <div className="slider pt-2 ">
               <p className="p-0 m-0 text-white">Hello User</p>
 
@@ -133,10 +140,52 @@ const Dashboard = () => {
                 ))}
               </div>
             </div>
+
+            <div className="container-fluid mt-3">
+              <div className="row">
+                {showsStore.shows
+                  .slice(13, showsStore.shows.length)
+                  .map((show) => (
+                    <div
+                      className="col-lg-6 col-md-12"
+                      key={("search-", show.id)}
+                    >
+                      <MovieCard
+                        name={show.name}
+                        image={
+                          show.image ? show.image.original : NotFoundPoster
+                        }
+                        categories={show.genres[0]}
+                        size="medium"
+                      />
+                    </div>
+                  ))}
+              </div>
+            </div>
+
+            <div className="container">
+              <div className="row">
+                <div className="col-12 d-flex justify-content-center align-items-center">
+                  <button
+                    className="btn btn-dark"
+                    onClick={() => setPagination((prev) => prev - 1)}
+                    disabled={pagination <= 0}
+                  >
+                    Prev
+                  </button>
+                  <p className="m-0 px-5">{pagination}</p>
+                  <button
+                    className="btn btn-dark"
+                    onClick={() => setPagination((prev) => prev + 1)}
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         )}
         {/* Content */}
-
         {!showsStore.loading && showsStore.type === "search" && (
           // Only Appears when is search
           <div className="container-fluid mt-3">
@@ -154,11 +203,11 @@ const Dashboard = () => {
             </div>
           </div>
         )}
-
         <footer className="p-3 mt-3 text-white">
           @2022 MTH made with love
         </footer>
       </div>
+      {showsStore.loading && <Loading />}
     </div>
   );
 };

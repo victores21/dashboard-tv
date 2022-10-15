@@ -9,6 +9,7 @@ const useDashboard = () => {
 
   //Stores
   const [search, setSearch] = useState("");
+  const [pagination, setPagination] = useState(0);
 
   //Functions
   const handleSearch = (event) => {
@@ -24,7 +25,20 @@ const useDashboard = () => {
     dispatch(getShows());
   }, [dispatch]);
 
-  return { showsStore, search, setSearch, handleSearch };
+  useEffect(() => {
+    if (pagination <= 0) return setPagination(0);
+
+    dispatch(getShows(pagination));
+  }, [pagination, dispatch]);
+
+  return {
+    showsStore,
+    search,
+    setSearch,
+    handleSearch,
+    pagination,
+    setPagination,
+  };
 };
 
 export default useDashboard;

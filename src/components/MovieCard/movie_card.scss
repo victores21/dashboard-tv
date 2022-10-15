@@ -8,6 +8,7 @@
   margin-bottom: 1rem;
   height: 100%;
   max-height: 96px;
+  min-height: 96px;
 
   .overview {
     width: 25%;
@@ -57,5 +58,9 @@
 
   @media (min-width: 768px) {
     max-height: 100%;
+
+    .overview {
+      width: 50%;
+    }
   }
 }
