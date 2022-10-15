@@ -7,7 +7,14 @@ import useControllers from "../../controllers";
 const Login = () => {
   const { useScreenHooks } = useControllers();
   const { useLogin } = useScreenHooks();
-  const { email, setEmail, password, setPassword, handleLogin } = useLogin();
+  const {
+    username,
+    setUsername,
+    password,
+    setPassword,
+    handleLogin,
+    isErrorInForm,
+  } = useLogin();
 
   return (
     <div className="login">
@@ -24,17 +31,18 @@ const Login = () => {
 
             <div className="col-lg-12 login-form">
               <div className="col-lg-12 login-form">
-                <form>
+                <form onSubmit={(event) => handleLogin(event)}>
                   <div className="form-group py-3">
                     <label className="form-control-label ">USERNAME</label>
                     <input
                       type="text"
                       className="form-control mt-2"
-                      placeholder="Email"
+                      placeholder="username"
                       onChange={(event) => {
-                        setEmail(event.target.value);
+                        setUsername(event.target.value);
                       }}
-                      value={email}
+                      value={username}
+                      required
                     />
                   </div>
                   <div className="form-group py-2">
@@ -47,14 +55,17 @@ const Login = () => {
                         setPassword(event.target.value);
                       }}
                       value={password}
+                      required
                     />
                   </div>
+                  {isErrorInForm && (
+                    <span className="text-danger">Usuario Incorrecto</span>
+                  )}
 
                   <div className="col-lg-12 pt-4 loginbttm">
                     <button
                       type="submit"
                       className="btn btn-primary w-100 py-2"
-                      onClick={(event) => handleLogin(event)}
                     >
                       LOGIN
                     </button>

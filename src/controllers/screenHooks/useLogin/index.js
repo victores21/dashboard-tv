@@ -15,14 +15,15 @@ const useLogin = () => {
   const dispatch = useDispatch();
 
   //States
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isErrorInForm, setIsErrorInForm] = useState();
 
   //Functions
   const checkIfUserExist = () => {
     const users = usersData;
     const isUserInDB = users.users_registered.find(
-      (user) => user.email === email
+      (user) => user.username === username
     );
 
     return isUserInDB ? isUserInDB : false;
@@ -36,17 +37,28 @@ const useLogin = () => {
     event.preventDefault();
     const user = checkIfUserExist();
 
+    setIsErrorInForm(true);
     if (!user) return;
 
-    dispatch(logIn({ email }));
+    dispatch(logIn({ username }));
     const isLoginCorrect = verifyUser(user, password);
 
     if (isLoginCorrect) {
-      localStorage.setItem("user", JSON.stringify({ email, isLoggedIn: true }));
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ username, isLoggedIn: true })
+      );
       navigate("/dashboard");
     }
   };
 
-  return { email, setEmail, password, setPassword, handleLogin };
+  return {
+    username,
+    setUsername,
+    password,
+    setPassword,
+    handleLogin,
+    isErrorInForm,
+  };
 };
 export default useLogin;
